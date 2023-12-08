@@ -12,10 +12,10 @@
 ![](https://img.shields.io/badge/Library_to_API_tests-Rest_Assured-informational?style=flat&color=blueviolet)
 ![](https://img.shields.io/badge/Reports-Serenity-informational?style=flat&color=blueviolet)
 
-*Test Automation Framework (TAF)* - the environment required for test automation including test harnesses and artifacts
+**Test Automation Framework (TAF)** - the environment required for test automation including test harnesses and artifacts
 such as test libraries. 
 
-A *test automation framework* that is easy to use, well documented and maintainable, supports a consistent approach to
+A **test automation framework** that is easy to use, well documented and maintainable, supports a consistent approach to
 automating tests. In order to establish an easy to use and maintainable TAF, the following framework meets expectations such as: 
 - Implement reporting facilities 
 - Enable easy troubleshooting 
@@ -34,7 +34,7 @@ general user library, object repository, and tests execution report.
 Natural benefits of implementing automated tests:
  - It eliminates repetitive manual testing that consumes lots of time and effort. 
 
-## How To Run The Tests
+## How To Run The Test
 ...
 
 ## Implemented Features 
@@ -50,7 +50,7 @@ Natural benefits of implementing automated tests:
 ...
 
 ## Other Documentation 
-* [Implementing Phases](https://github.com/FrostBrain2020/ATF/wiki/Implementing-Phases)
+* [Implementing Phases](https://github.com/FrostBrain2020/ATF/wiki/1.-Implementing-Phases)
 
 ---
 ## Q&A Section 
