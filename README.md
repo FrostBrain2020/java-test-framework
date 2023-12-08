@@ -50,7 +50,7 @@ Natural benefits of implementing automated tests:
 ...
 
 ## Other Documentation 
-* [Implementing Phases](https://github.com/FrostBrain2020/ATF.wiki.git)
+* [Implementing Phases](https://github.com/FrostBrain2020/ATF/wiki/Implementing-Phases)
 
 ---
 ## Q&A Section 
