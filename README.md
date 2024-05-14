@@ -7,7 +7,8 @@
 ![](https://img.shields.io/badge/Code-Java%2017-informational?style=flat&color=blueviolet)
 ![](https://img.shields.io/badge/Build-Maven-informational?style=flat&color=blueviolet)
 ![](https://img.shields.io/badge/Test_Framework-JUnit5-informational?style=flat&color=blueviolet)
-![](https://img.shields.io/badge/Library_to_UI_tests-Selenium-informational?style=flat&color=blueviolet)
+
+[//]: # (![]&#40;https://img.shields.io/badge/Library_to_UI_tests-Selenium-informational?style=flat&color=blueviolet&#41;)
 ![](https://img.shields.io/badge/Framework_to_implemented_BDD-Cucumber-informational?style=flat&color=blueviolet)
 ![](https://img.shields.io/badge/Library_to_API_tests-Rest_Assured-informational?style=flat&color=blueviolet)
 ![](https://img.shields.io/badge/Reports-Serenity-informational?style=flat&color=blueviolet)
@@ -49,8 +50,6 @@ Natural benefits of implementing automated tests:
 ## Design Patterns Using In The Code
 ...
 
-## Other Documentation 
-* [Implementing Phases](https://github.com/FrostBrain2020/ATF/wiki/1.-Implementing-Phases)
 
 ---
 ## Q&A Section 

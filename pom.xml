@@ -9,9 +9,144 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <test.suite.name>*TestSuite</test.suite.name>
+
+        <serenity.version>4.1.12</serenity.version>
+        <junit.version>5.10.2</junit.version>
+        <jackson.version>2.17.1</jackson.version>
+        <assertj.version>3.25.3</assertj.version>
+
+        <!-- Build-->
+        <maven.compiler.version>3.11.0</maven.compiler.version>
+        <maven.surefire.plugin.version>3.1.0</maven.surefire.plugin.version>
+        <maven.failsafe.plugin.version>3.1.0</maven.failsafe.plugin.version>
+        <go.offline.maven.plugin.version>1.2.8</go.offline.maven.plugin.version>
     </properties>
+
+    <dependencies>
+        <!-- BDD Serenity Dependencies -->
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-rest-assured</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Additional Dependencies -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>de.qaware.maven</groupId>
+                <artifactId>go-offline-maven-plugin</artifactId>
+                <version>${go.offline.maven.plugin.version}</version>
+                <configuration>
+                    <dynamicDependencies>
+                        <dynamicDependency>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${maven.surefire.plugin.version}</version>
+                        </dynamicDependency>
+                        <dynamicDependency>
+                            <groupId>net.serenity-bdd.maven.plugins</groupId>
+                            <artifactId>serenity-maven-plugin</artifactId>
+                            <version>${serenity.version}</version>
+                            <repositoryType>PLUGIN</repositoryType>
+                        </dynamicDependency>
+                        <dynamicDependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-junit-platform</artifactId>
+                            <version>${maven.surefire.plugin.version}</version>
+                            <repositoryType>PLUGIN</repositoryType>
+                        </dynamicDependency>
+                    </dynamicDependencies>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/${test.suite.name}.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Generate the Serenity reports whenever you run 'mvn verify -->
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-single-page-report</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <tags/>
+                    <reports>single-page-html</reports>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal> <!-- will NOT fail the build if there test failures -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
