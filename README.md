@@ -1,8 +1,8 @@
 # Test Automation Framework
-> The project covers the basic scope of creating TAF, including:
-> - Creation of a user for testing 
-> - basic REEST API tests
-> - basic E2E tests
+Example endpoints (/users/{username}) tests in Java Test Framework
+
+> The project covers the basic scope of creating the **Test Automation Framework**, including:
+> - basic REST API test
 
 ![](https://img.shields.io/badge/Code-Java%2017-informational?style=flat&color=blueviolet)
 ![](https://img.shields.io/badge/Build-Maven-informational?style=flat&color=blueviolet)
@@ -55,7 +55,30 @@ mvn clean verify -DenvConfig=qa -Dtest.suite.name=UsersTestSuite
 - Possibility to run tests on different environments
 
 ## Project Structures 
-..
+```
+integration-tests
+│   README.md                  # this file      
+|   pom.xml                    # pom for build, running, and generating report for the project         
+└─── src 
+     └── main           
+        │   properties         # folder with environments settings 
+     └── test           
+        └── java               
+        |    |   api           # models - Jackson model for serialization
+        |    |                 # api's class - class with requerst definition   
+        |    |   assertions    # all assertion using "Chain assertion model"; main class - CustomAssertions
+        |    |                 # with a large number of assertion classes, it is worth separating the main class 
+        |    |                 # (CustomAssertions) into smaller grouped ones
+        |    |   testsSteps    # all DefSteps with Steps classes splitted by functionalities
+        |    |   testsSuites   # list of all Suites
+        |    |   utils         # support folder ex. for RequestUtils       
+        └── resources 
+            |   environments   # properties with lists of env attributes used in tests ex. base_url etc. 
+            |   features       # cucumbers features described in the BDD convention
+            |   cucumber.pr... # cucumber settings for not generating a report after the tests
+            |   logback.xml    # setting the level of logs in the console when performing tests
+
+```
 
 ## Using Libraries 
 - JUnit 5
