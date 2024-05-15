@@ -12,7 +12,7 @@ public class GetUsernameApi {
         return getBaseRequestSpecification()
                 .contentType(JSON)
                 .when()
-                .get(BASE_URL + "/" + username)
+                .get(BASE_URL + "/users/" + username)
                 .prettyPeek();
     }
 }

@@ -84,6 +84,7 @@ integration-tests
 - JUnit 5
 - Serenity
 - Jackson
+- RestAssured
 
 ## Design Patterns Using In The Code
 - Test written in BDD convention
