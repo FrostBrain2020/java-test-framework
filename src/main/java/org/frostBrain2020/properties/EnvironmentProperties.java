@@ -11,15 +11,15 @@ import static java.lang.String.format;
 public class EnvironmentProperties {
 
     private static final Properties properties = new Properties();
-    private static final Logger logger = LoggerFactory.getLogger(EnvironmentProperties.class);
+    private static final Logger log = LoggerFactory.getLogger(EnvironmentProperties.class);
 
-    static{
-        String environment = System.getProperty("envConfig"); // -DenvConfig=...
-        try{
+    static {
+        String environment = System.getProperty("envConfig"); // -DenvConfig=....
+        try {
             properties.load(EnvironmentProperties.class.getClassLoader()
-                    .getResourceAsStream(format("environments\\$s.properties", environment)));
+                    .getResourceAsStream(format("environments\\%s.properties", environment)));
         } catch (IOException | NullPointerException e) {
-            logger.error("Unable to find property file from environment {}", System.getProperty("envConfig"));
+            log.error("Unable to find property file from environment {}", System.getProperty("envConfig"));
             e.printStackTrace();
         }
     }
