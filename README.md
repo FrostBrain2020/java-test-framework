@@ -36,21 +36,55 @@ Natural benefits of implementing automated tests:
  - It eliminates repetitive manual testing that consumes lots of time and effort. 
 
 ## How To Run The Test
-...
+1. Clone the [repo](https://github.com/FrostBrain2020/java-test-framework).
+2. If you want to run a project locally, you can use command:
+```
+mvn clean verify -Dtest.suite.name=<suite_name> -DenvConfig=<environment>
+```
+example:
+```
+mvn clean verify -DenvConfig=qa -Dtest.suite.name=UsersTestSuite
+```
+3. After the tests are performed, two types of reports are generated: \
+   a. **Full report** located in: */target/site/serenity/index.html* \
+   b. **Single Page HTML Summary** located in : */target/site/serenity/serenity-summary.html*
 
 ## Implemented Features 
-...
+- Generating a single page report in HTML format for each run of a tests
+- Implementation example REST API tests with chain assertion pattern
+- Possibility to run tests on different environments
 
 ## Project Structures 
-...
+..
 
 ## Using Libraries 
-...
+- JUnit 5
+- Serenity
+- Jackson
 
 ## Design Patterns Using In The Code
-...
+- Test written in BDD convention
+- Chain custom assertion model
 
 
 ---
 ## Q&A Section 
-...
+### How to run tests with a specific test suite?
+1. If you don't want to declare a specific tests suite on startup, all tests suites will run by default.
+> If you want to overwrite the default test suite settings, you need to change the value **test.suite.name** in the main pom file.
+2. Run command with test suite declaration
+```
+mvn clean verify -Dtest.suite.name=<suite_name> -DenvConfig=<environment>
+```
+
+### How to run tests on a specific environment?
+Run command with environment declaration, ex.
+```
+mvn clean verify -DenvConfig=<environment>
+```
+The list of available environments is in: _test\resources\environments_
+
+### How to add a new variable to environment settings?
+1. Select file in _test\resources\environments_ where you would like to put the new variable. You need to add a new property file if you want to add a new environment.
+2. Add a new variable and save.
+3. Check if the kay of a new variable was declared in class **EnvironmentProperties.java**. If not, you need to add this declaration. 
