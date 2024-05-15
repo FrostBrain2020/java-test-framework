@@ -20,7 +20,7 @@ public class GetUsernameSteps {
     }
 
     @Step
-    public void checkIncorrectUserStatus() throws JsonProcessingException {
+    public void checkIncorrectUserStatus(){
         CustomAssertion.assertThat(response)
                 .has404StatusCode();
     }

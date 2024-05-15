@@ -22,11 +22,6 @@ public class GetUsernameDefSteps {
 
     @Then("I received HTTP response 404")
     public void checkHttpStatus(){
-        try {
-            getUsernameSteps.checkIncorrectUserStatus();
-        } catch (JsonProcessingException e) {
-            log.error("Invalid object mapping UsernameNotFound.class");
-            e.printStackTrace();
-        }
+        getUsernameSteps.checkIncorrectUserStatus();
     }
 }
